@@ -6,13 +6,13 @@
 #    By: lniki <lniki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/04 15:18:46 by lniki             #+#    #+#              #
-#    Updated: 2020/02/04 18:40:06 by lniki            ###   ########.fr        #
+#    Updated: 2020/02/06 17:59:33 by lniki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS = mparser.c print_c.c print_s.c print_per.c print_p.c
+SRCS = mparser.c print_c.c print_s.c print_per.c print_p.c print_d.c
 
 OBJECTS = *.o
 
@@ -22,7 +22,7 @@ all: $(NAME)
 
 $(NAME): $(SRCS) $(INCLUDES)
 	gcc -Wall -Werror -Wextra -I $(INCLUDES) -c $(SRCS) lib/*.c
-	ar rc $(NAME) *.o lib/*.o
+	ar rc $(NAME) *.o 
 	ranlib $(NAME) 
 	/bin/rm -f *.o
 

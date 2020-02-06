@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:57:25 by lniki             #+#    #+#             */
-/*   Updated: 2020/02/04 16:38:52 by lniki            ###   ########.fr       */
+/*   Updated: 2020/02/06 16:45:06 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void    print_s(t_pr *mod)
     
     s = va_arg(*(mod->ap), char *);
     if(!s)
-        s = "(null)";
+        s = "(null)"; 
     if((mod->wdtx > mod->precf && mod->precf >= 0) || mod->wdtx > (int)ft_strlen(s))
         mod->nprinted += mod->wdtx;
     else if ((mod->precf >= 0 && mod->precf < (int)ft_strlen(s)))
