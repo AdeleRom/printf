@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 14:51:10 by lniki             #+#    #+#             */
-/*   Updated: 2020/02/04 18:38:59 by lniki            ###   ########.fr       */
+/*   Updated: 2020/02/25 14:15:38 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdio.h>
-#include "lib/libft.h"make 
+#include "lib/libft.h"
 
  typedef  struct s_pr
     {
@@ -48,5 +48,7 @@
     void    print_s(t_pr *mod);
     void   print_per(t_pr *mod);
     void   print_p(t_pr *mod);
+    void   print_d(t_pr *mod);
+    void   print_o(t_pr *mod);
 
 #endif

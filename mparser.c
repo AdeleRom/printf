@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 16:13:17 by lniki             #+#    #+#             */
-/*   Updated: 2020/02/06 16:37:56 by lniki            ###   ########.fr       */
+/*   Updated: 2020/02/25 14:13:24 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void   check_spec(t_pr *mod)
 {
     if(mod->spec == 'd' || mod->spec == 'i')
         print_d(mod);
-    // if(mod->spec == 'o')
-    //     print_o(mod);
+    if(mod->spec == 'o')
+        print_o(mod);
     // if(mod->spec == 'x')
     //     print_x(mod);
     // if(mod->spec == 'X')
