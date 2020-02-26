@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 15:21:46 by lniki             #+#    #+#             */
-/*   Updated: 2020/02/25 16:22:07 by lniki            ###   ########.fr       */
+/*   Updated: 2020/02/26 16:42:28 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,20 @@ int main()
 	// int c  = 0;
 	// ft_printf("%-25p.\n", &c);
 	
-	// ft_printf("%05d\n", 43);
-	ft_printf("%#5o\n", 3);
-	// printf("%o\n", 43);
-	printf("%#5o\n", 3);
-	printf("this %o number\n", 17);
-	ft_printf("this %o number\n", 17);
+	//ft_printf("%o\n", 43);
+	//printf("%o\n", 43);
+	
+	//ft_printf("%#5o\n", 3);
+	//printf("%#5o\n", 3);
+	
+	ft_printf("%#5o\n", 43);
+	printf("%#5o\n", 43);
+	
+	ft_printf("%#-5o\n", 43);
+	printf("%#-5o\n", 43);
+	
+	//printf("this %o number\n", 17);
+	//ft_printf("this %o number\n", 17);
 	
 	//ft_printf("%015.6d\n", 43);
 	//printf("%015.6d\n", 43);

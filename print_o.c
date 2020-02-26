@@ -7,22 +7,18 @@ void   print_o(t_pr *mod)
     char *s; // строка для того чтоб туда записать конечный вид
     int i; // количество символов
 
-    // if(mod->leng == 1)
-    //     l = (long)(char)va_arg(*(mod->ap), int);
-    // else if(mod->leng == 2)
-    //     l = (long)(short int)va_arg(*(mod->ap), int);
-    // else if(mod->leng == 3 || mod->leng == 4)
-    //     l = va_arg(*(mod->ap), long int);
-    // else 
-    //     l = (long)va_arg(*(mod->ap), int);
+    if(mod->leng == 1)
+        n = (unsigned long)( unsigned char)va_arg(*(mod->ap), unsigned int);
+    else if(mod->leng == 2)
+        n = (unsigned long)( unsigned short int)va_arg(*(mod->ap), unsigned int);
+    else if(mod->leng == 3 || mod->leng == 4)
+        n = va_arg(*(mod->ap), unsigned long int);
+    else 
+        n = (unsigned long)va_arg(*(mod->ap), unsigned int);
 
-    n = (unsigned long)va_arg(*(mod->ap), void*);
+    //n = (unsigned long)va_arg(*(mod->ap), void*);
     l = n;
     i = 0;
-
-
-    // printf("%lu\n", n);
-    // printf("%lu\n", l);
 
     while(n > 0)
     {
@@ -37,19 +33,29 @@ void   print_o(t_pr *mod)
         s[--i] = (l % 8) + '0';
         l = l / 8;
     } 
+    if(mod->hash == 1)
+        s = ft_strjoin("0", s);
     
-    while(mod->wdtx > (int)ft_strlen(s))
+    if(mod->minus == 1 && mod->zero == 0 && mod->)
     {
-        if(mod->hash == 0)
+        write(1, s, (int)ft_strlen(s));
+        while(mod->wdtx > (int)ft_strlen(s))
+        {
             write(1, " ", 1);
-        
-        mod->wdtx--;
+            mod->wdtx--;
+        }
     }
-    if(mod->hash == 1 && mod->minus ==  0)
+    if(mod->minus == 0)
     {
-        write(1, "0", 1);
-    }
+        while(mod->wdtx > (int)ft_strlen(s))
+        {
+            write(1, " ", 1);
+            mod->wdtx--;
+        }
+    
     write(1, s, (int)ft_strlen(s));
+    }
+    
 
 
 }
