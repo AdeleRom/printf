@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 14:51:10 by lniki             #+#    #+#             */
-/*   Updated: 2020/02/25 14:15:38 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/05 21:39:53 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
                 
     } t_pr;
 
+    int     sign(char *s, char *q);
     int     ft_printf(const char *format, ...);
     void    print_c(t_pr *mod);
     void    print_s(t_pr *mod);

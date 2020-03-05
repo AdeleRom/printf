@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 15:21:46 by lniki             #+#    #+#             */
-/*   Updated: 2020/02/26 16:42:28 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/05 22:36:33 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,20 @@ int main()
 	//ft_printf("%#5o\n", 3);
 	//printf("%#5o\n", 3);
 	
-	ft_printf("%#5o\n", 43);
-	printf("%#5o\n", 43);
+	//ft_printf("%08.5o\n", 34);
+	//printf("%08.5o\n", 34);
+	// ft_printf("this %o number", 17);
+	// ft_printf("%5.2o\n", 53);
+	// printf("%5.2o\n", 53);
 	
-	ft_printf("%#-5o\n", 43);
-	printf("%#-5o\n", 43);
+	// printf("%7o\n", 33);
 	
-	//printf("this %o number\n", 17);
-	//ft_printf("this %o number\n", 17);
-	
+	// ft_printf("%7o\n", 33);
+
+	//printf("%2o", 94827);
+	//ft_printf("%.3o", 938862);
+	////ft_printf("%+7d\n", 0);
+//	printf("%+7d\n", 0);
 	//ft_printf("%015.6d\n", 43);
 	//printf("%015.6d\n", 43);
 	
@@ -45,6 +50,8 @@ int main()
 	// printf("%-25p.\n", &c);
 	
 	// printf("%-5c.\n", 'z');
+	ft_printf("%ld%hhd%hd\n", -22337203685477, 100, 3047);
+	//printf("%ld%hhd%hd", -22337203685477, 100, 3047);
     return(0);
 	// printf("hello%");
     // ft_printf("hello");

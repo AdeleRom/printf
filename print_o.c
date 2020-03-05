@@ -6,6 +6,8 @@ void   print_o(t_pr *mod)
     unsigned long l; // тоже самое, чтоб запомнить
     char *s; // строка для того чтоб туда записать конечный вид
     int i; // количество символов
+    int r; // количество нолей или пробелов (ширина - длина строки)
+
 
     if(mod->leng == 1)
         n = (unsigned long)( unsigned char)va_arg(*(mod->ap), unsigned int);
@@ -16,10 +18,10 @@ void   print_o(t_pr *mod)
     else 
         n = (unsigned long)va_arg(*(mod->ap), unsigned int);
 
-    //n = (unsigned long)va_arg(*(mod->ap), void*);
     l = n;
     i = 0;
-
+    r = 0;
+  
     while(n > 0)
     {
         n = n / 8;
@@ -27,35 +29,60 @@ void   print_o(t_pr *mod)
     }
 
     s = ft_strnew(l == 0 ? 1 : i); 
+   
+    //для нуля
+    if (l == 0 && mod->precf != 0)
+        s = ft_strjoin("0", s);
 
     while(l > 0)
     {
         s[--i] = (l % 8) + '0';
         l = l / 8;
     } 
-    if(mod->hash == 1)
-        s = ft_strjoin("0", s);
     
-    if(mod->minus == 1 && mod->zero == 0 && mod->)
+    // хэш
+    if(mod->hash == 1 && s[0] != '0')
+        s = ft_strjoin("0", s);
+
+    // точность
+    if(mod->precf != -1)
     {
-        write(1, s, (int)ft_strlen(s));
-        while(mod->wdtx > (int)ft_strlen(s))
+        if (mod->precf > (int)ft_strlen(s))
+            r = mod->precf - ft_strlen(s);
+        while(r--)
+            s = ft_strjoin("0", s);
+    }
+    // есть минус
+    if(mod->minus == 1)
+    {
+        write(1, s, ft_strlen(s));
+        if(mod->wdtx > mod->precf)
         {
-            write(1, " ", 1);
-            mod->wdtx--;
+            if (mod->wdtx > (int)ft_strlen(s))
+                r = mod->wdtx - ft_strlen(s);
+            while(r--)
+                write(1, " ", 1);
         }
     }
+    // нет минуса
     if(mod->minus == 0)
     {
-        while(mod->wdtx > (int)ft_strlen(s))
+        if(mod->wdtx && mod->wdtx > mod->precf)
         {
-            write(1, " ", 1);
-            mod->wdtx--;
+            if (mod->wdtx > (int)ft_strlen(s))
+                r = mod->wdtx - ft_strlen(s);
+            if(mod->zero == 1 && mod->precf <= 0)
+            {
+                while(r--)
+                    write(1, "0", 1);
+            }   
+            else 
+            {
+                while(r--)
+                    write(1, " ", 1);
+            }
         }
-    
-    write(1, s, (int)ft_strlen(s));
+        write(1, s, ft_strlen(s));
     }
     
-
-
 }
