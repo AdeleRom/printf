@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 16:13:17 by lniki             #+#    #+#             */
-/*   Updated: 2020/02/25 14:13:24 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/06 16:34:36 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ void   check_spec(t_pr *mod)
         print_d(mod);
     if(mod->spec == 'o')
         print_o(mod);
-    // if(mod->spec == 'x')
-    //     print_x(mod);
+    if(mod->spec == 'x')
+        print_x(mod);
     // if(mod->spec == 'X')
     //     print_xx(mod);
-    // if(mod->spec == 'u')
-    //     print_u(mod);
+    if(mod->spec == 'u')
+        print_u(mod);
     if(mod->spec == 'c')
         print_c(mod);
     if(mod->spec == 's')
         print_s(mod);
-    // if(mod->spec == 'f')
-    //     print_f(mod);
+    if(mod->spec == 'f')
+        print_f(mod);
     if(mod->spec == 'p')
         print_p(mod);
     if(mod->spec == '%')

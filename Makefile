@@ -6,13 +6,13 @@
 #    By: lniki <lniki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/04 15:18:46 by lniki             #+#    #+#              #
-#    Updated: 2020/02/25 14:14:22 by lniki            ###   ########.fr        #
+#    Updated: 2020/03/06 16:37:18 by lniki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS = mparser.c print_c.c print_s.c print_per.c print_p.c print_d.c print_o.c
+SRCS = mparser.c print_c.c print_s.c print_per.c print_p.c print_d.c print_o.c print_u.c print_x.c float_1.c float_2.c ft_spec_f.c
 
 OBJECTS = *.o
 
