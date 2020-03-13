@@ -45,7 +45,7 @@ void   print_x(t_pr *mod)
             s[--i] = (l % 16) + 87; 
         l = l / 16;
     }
-        //для нуля
+        // для нуля
     // if (l == 0 && mod->precf != 0)
     //     s = ft_strjoin("0", s);
 
@@ -55,7 +55,7 @@ void   print_x(t_pr *mod)
         l = l / 10;
     } 
     
-    if(mod->zero == 1 && mod->hash == 0 && mod->precf == -1)
+    if(mod->zero == 1 && mod->hash == 0 && mod->precf == -1 && mod->wdtx > (int)ft_strlen(s))
          s = ft_strjoin("0", s);
 
     // точность
@@ -68,10 +68,12 @@ void   print_x(t_pr *mod)
     }
     
     // хэш
-    if(mod->hash == 1 && check_0 == 0)
+    if(mod->hash == 1 && check_0 == 0 && 
+    ((mod->zero == 1 && mod->precf <= 0) || ((mod->zero == 0 || (mod->zero == 1 && mod->precf > 0)) 
+    && (mod->wdtx == mod->precf || mod->wdtx == 0 || mod->minus == 1 
+    || (s[0] == '0' && mod->precf >= mod->wdtx)))))
         write(1, "0x", 2);
-    // else if (mod->wdtx && mod->zero == 0)
-    //     s = ft_strjoin("0x", s);
+ 
     
     // есть минус
     if(mod->minus == 1)
@@ -107,7 +109,8 @@ void   print_x(t_pr *mod)
             {
                 while(r--)
                     write(1, " ", 1);
-                
+                if(mod->hash == 1 && check_0 == 0)
+                    write(1, "0x", 2);
             }
         }
         // if(mod->hash == 1 && check_0 == 0)
