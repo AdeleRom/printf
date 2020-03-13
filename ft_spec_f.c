@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_spec_f.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soyster <soyster@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 01:18:14 by soyster           #+#    #+#             */
-/*   Updated: 2020/03/05 22:59:51 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/13 22:38:39 by soyster          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	print_f(t_pr *mod)
 	if (!(fl = malloc(sizeof(t_float))))
 		return ;
 	ft_fill_fl(fl);
-	if (mod->len == 5)
+	if (mod->leng == 5)
 		fl->f = va_arg(*mod->ap, long double);
 	else
 		fl->f = va_arg(*mod->ap, double);
@@ -73,10 +73,10 @@ void	print_f(t_pr *mod)
 	ft_separ_fl(fl, mod);
 	ft_fill_frt(fl, mod);
 	ft_check_s(fl, mod);
-	if (mod->minus == '-')
+	if (mod->minus == 1)
 		ft_print_fl_min(fl, mod);
 	ft_print_sp(fl, mod);
-	if (mod->minus != '-')
+	if (mod->minus != 1)
 		ft_print_fl(fl, mod);
 	free(fl->frt);
 	free(fl);

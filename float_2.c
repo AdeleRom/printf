@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: soyster <soyster@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 13:08:47 by soyster           #+#    #+#             */
-/*   Updated: 2020/03/05 23:13:42 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/13 22:42:53 by soyster          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_print_sp(t_float *fl, t_pr *mod)
 {
 	int	act_wdtx;
 
-	if (mod->space == 1 && !fl->ch_s && mod->plus == 1
+	if (mod->space == 1 && !fl->ch_s && mod->plus == 0
 	&& mod->minus != 1)
 	{
 		write(1, " ", 1);
