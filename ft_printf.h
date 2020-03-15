@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 14:51:10 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/06 16:37:46 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/15 18:32:45 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct	s_float
     void   print_o(t_pr *mod);
     void   print_u(t_pr *mod);
     void   print_x(t_pr *mod);
+    void   print_xx(t_pr *mod);
 
     int		ft_act_wdtx(t_float *fl, t_pr *mod);
     void	ft_print_sp(t_float *fl, t_pr *mod);

@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 16:13:17 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/06 16:34:36 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/15 19:01:35 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void   check_spec(t_pr *mod)
         print_o(mod);
     if(mod->spec == 'x')
         print_x(mod);
-    // if(mod->spec == 'X')
-    //     print_xx(mod);
+    if(mod->spec == 'X')
+        print_xx(mod);
     if(mod->spec == 'u')
         print_u(mod);
     if(mod->spec == 'c')
@@ -44,7 +44,7 @@ int   check_flag(t_pr *mod, char *format)
     while(format[i] != 'd' && format[i] != 'i' && format[i] != 'o' && 
         format[i] != 'x' && format[i] != 'X' && format[i] != 'u' && 
         format[i] != 'c' && format[i] != 's' && format[i] != 'f' &&
-        format[i] != 'p' && format[i] != '%')
+        format[i] != 'p' && format[i] != '%' && format[i])
     {
         if(format[i] == '-')
             mod->minus = 1;
@@ -87,7 +87,7 @@ int   check_flag(t_pr *mod, char *format)
         if(format[i] != 'd' && format[i] != 'i' && format[i] != 'o' && 
         format[i] != 'x' && format[i] != 'X' && format[i] != 'u' && 
         format[i] != 'c' && format[i] != 's' && format[i] != 'f' &&
-        format[i] != 'p' && format[i] != '%')
+        format[i] != 'p' && format[i] != '%' && format[i])
             i++;
     }
     mod->spec = format[i];
@@ -128,10 +128,11 @@ int     mparser(t_pr *mod, char *format)
         {
             i += check_flag(mod, &format[i]); // не надо будет прибавлять           
             check_spec(mod);
+            if(mod->spec == '\0')
+                return(0);  
             fill(mod);
         }
-            
-        
+              
         i++;
     }
     
