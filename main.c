@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 15:21:46 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/12 16:09:49 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/16 21:44:28 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,59 @@ int main()
 	// printf("%#5.0x\n", 0);
 	//ft_printf("%#05x\n", 43);
 	//printf("%#05x\n", 43);
-	ft_printf("%#7x", 33);
+	// ft_printf("%.0p\n, %.p\n", 0, 0);
+	//  printf("%d\n", ft_printf("%.0p\n, %.p\n", 0, 0));
+	// // // printf("%.0d\n, %.d\n", 0, 0);
+	//  printf("%d\n", printf("%.0p\n, %.p\n", 0, 0));
+
+	// printf("%d\n", ft_printf("%s %d %p %% %x\n", "bonjour ", 42, &free, 42));
+	// printf("%d\n", printf("%s %d %p %% %x\n", "bonjour ", 42, &free, 42));
+	
+	// printf("%d\n", ft_printf("s: %s, d:%d\n", "a string", 42));
+	// printf("%d\n", printf("s: %s, d:%d\n", "a string", 42));
+	// int a = 8;
+	// printf("%d\n", ft_printf("%2.9p\n", 1234567));
+	// // printf("%d\n", printf("%2.9p\n", 1234567));
+	// printf("%p\n", a);
+	//char d1 =  '0';
+	
+  	//printf ("%18.0p\n",d1);
+	//ft_printf("%0p\n", 1234567);
+	// printf("%d\n", ft_printf ("%p", 0));
+	// printf("%d\n", printf ("%p", 0));
+	
+	// printf("%d\n", ft_printf ("%.0p, %.p\n", 0, 0));
+	// printf("%d\n", printf ("%.0p, %.p\n", 0, 0));
+	
+	//printf("%d\n", ft_printf ("%p\n", NULL));
+	//printf("%d\n", printf ("%p\n", NULL));	
+	
+	//printf("%d\n", ft_printf ("%.5p\n", 0));
+	 //printf("%d\n", printf ("%.5p\n", 0));
+	
+	
+	 printf("%d\n", ft_printf ("%2.9p\n", 1234));
+	 printf("%d\n", printf ("%2.9p\n", 1234));
+	
+	printf("%d\n", ft_printf ("%2.9p\n", 1234567));
+	printf("%d\n", printf ("%2.9p\n", 1234567));
+	
+	// printf("%d\n", ft_printf ("{%-15p}", 0));
+	// printf("%d\n", printf ("{%-15p}", 0));
+	
+	//printf("%d\n", ft_printf ("{%5p}", 0));
+	//printf("%d\n", printf ("{%5p}", 0));
+	
+	
 
 	
+	
+	
+
+	//printf("%d", ft_printf ("%.0p",0));
+	//printf ("%18.0p\n",d1);
+	// printf("{%5p}\n", 0);
+	// ft_printf("{%5p}\n", 0);
 	
 	//ft_printf("%#-8.5x\n", 34);
 	//printf("%#-8.5x\n", 34);

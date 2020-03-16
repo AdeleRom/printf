@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 16:13:17 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/15 19:01:35 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/16 14:54:43 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,11 +119,15 @@ int     mparser(t_pr *mod, char *format)
 
     i = 0 ;
     fill(mod);
-    mod->nprinted = 0;
+    if(mod->nprinted <= 0)
+        mod->nprinted = 0;
     while(format[i])
     {
         if(format[i] != '%')
+        {
             write(1, &format[i], 1);
+            mod->nprinted++;
+        }    
         else if (format[i] == '%')
         {
             i += check_flag(mod, &format[i]); // не надо будет прибавлять           
@@ -132,12 +136,8 @@ int     mparser(t_pr *mod, char *format)
                 return(0);  
             fill(mod);
         }
-              
         i++;
     }
-    
-    // printf("-%d +%d ' '%d  0%d  #%d  w%d p%d l%d\n", mod->minus, mod->plus, mod->space,
-    //     mod->zero, mod->hash, mod->wdtx, mod->prec, mod->leng);
     return(1);
 }
 
@@ -149,9 +149,10 @@ int     ft_printf(const char *format, ...)
     
     if (!((mod = (t_pr*)malloc(sizeof(t_pr)))))
         return (0);
+    mod->nprinted = 0;
 	va_start(ap, format); //запускаем 
     mod->ap = &ap;
     mparser(mod, (char*)format);
 	va_end(ap); 
-    return(0);
+    return(mod->nprinted);
 }

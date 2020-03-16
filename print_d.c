@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 16:36:38 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/15 20:35:42 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/16 16:27:18 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,12 @@ void   print_d(t_pr *mod)
         
         if (mod->precf > (int)ft_strlen(s))
             r = mod->precf - ft_strlen(s);
-        while(r--)
+        while(r)
+        {
             s = ft_strjoin("0", s);
+            r--;
+        }
+            
     }
     
     // джойним знак
@@ -93,12 +97,17 @@ void   print_d(t_pr *mod)
         if (mod->zero == 1)
             s = ft_strjoin(q, s);
         write(1, s, ft_strlen(s));
+        mod->nprinted += ft_strlen(s);
         if(mod->wdtx > mod->precf)
         {
             if (mod->wdtx > (int)ft_strlen(s))
                 r = mod->wdtx - ft_strlen(s);
-            while(r--)
+            while(r)
+            {
                 write(1, " ", 1);
+                mod->nprinted++;
+                r--;
+            }    
         }
     }
     
@@ -115,23 +124,39 @@ void   print_d(t_pr *mod)
             if(mod->zero == 1 && mod->precf <= 0)
             {            
                 if ((s[0] != '-' && s[0] != '+' && s[0] != ' ') && (q[0] == '-' || q[0] == '+' || q[0] == ' '))
+                { 
                     write(1, q, 1);
-                while(r--)
+                    mod->nprinted++;   
+                }   
+                    
+                while(r)
+                {
                     write(1, "0", 1);
+                    r--;
+                    mod->nprinted++;
+                }    
             }   
             else 
             {
-                while(r--)
+                while(r)
+                {
                     write(1, " ", 1);
-                if ((s[0] != '-' && s[0] != '+' && s[0] != ' ') && (q[0] == '-' || q[0] == '+' || q[0] == ' '))
-                    write(1, q, 1);      
+                    mod->nprinted++;
+                    r--;
+                }    
+                if ((s[0] != '-' && s[0] != '+' && s[0] != ' ') && (q[0] == '-' || q[0] == '+' || q[0] == ' ')) 
+                {
+                    write(1, q, 1);
+                    mod->nprinted++;
+                }         
             }
         }
         else if (mod->zero == 1)
             s = ft_strjoin(q, s);
         write(1, s, ft_strlen(s));
+        mod->nprinted += ft_strlen(s);
     }
-    q[0] = '0';
+    q[0] = '0'; 
     free(s);
 }
 

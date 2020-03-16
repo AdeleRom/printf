@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 18:31:25 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/15 20:33:09 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/16 16:52:48 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,12 @@ void   print_xx(t_pr *mod)
     {
         if (mod->precf > (int)ft_strlen(s))
             r = mod->precf - ft_strlen(s);
-        while(r--)
+        while(r)
+        {
             s = ft_strjoin("0", s);
+            r--;
+        }
+         
     }
     
     // хэш
@@ -81,23 +85,34 @@ void   print_xx(t_pr *mod)
     ((mod->zero == 1 && mod->precf <= 0) || ((mod->zero == 0 || (mod->zero == 1 && mod->precf > 0)) 
     && (mod->wdtx == mod->precf || mod->wdtx == 0 || mod->minus == 1 
     || (s[0] == '0' && mod->precf >= mod->wdtx)))))
+    {
         write(1, "0X", 2);
+        mod->nprinted += 2;
+    }    
  
-    
     // есть минус
     if(mod->minus == 1)
     {
         if ((mod->precf > 0 || mod->precf == -1)) //&& check_0 == 0)
+        {
             write(1, s, ft_strlen(s));
+            mod->nprinted += ft_strlen(s);
+        }    
          else
+        {    
             write(1, " ", 1);
-      //  write(1, s, ft_strlen(s));
+            mod->nprinted++;
+        }
         if(mod->wdtx > mod->precf)
         {
             if (mod->wdtx > (int)ft_strlen(s) + ((mod->hash && check_0 == 0) ? 2 : 0))
                 r = mod->wdtx - ft_strlen(s) - ((mod->hash && check_0 == 0) ? 2 : 0);
-            while(r--)
+            while(r)
+            {
                 write(1, " ", 1);
+                mod->nprinted++;
+                r--;
+            }
         }
     }
     // нет минуса
@@ -109,21 +124,40 @@ void   print_xx(t_pr *mod)
                 r = mod->wdtx - ft_strlen(s) - ((mod->hash && check_0 == 0) ? 2 : 0);
             if(mod->zero == 1 && mod->precf <= 0)
             {
-                while(r--)
+                while(r)
+                {
                     write(1, "0", 1);
+                    r--;
+                    mod->nprinted++;
+                }
             }   
             else 
             {
-                while(r--)
+                while(r)
+                {
                     write(1, " ", 1);
+                    r--;
+                    mod->nprinted++;
+                }
+                    
                 if(mod->hash == 1 && check_0 == 0)
-                    write(1, "0X", 2);
+                {
+                     write(1, "0X", 2);
+                     mod->nprinted += 2;
+                }   
             }
         }
         if ((mod->precf > 0 || mod->precf == -1)) //&& check_0 == 0)
-            write(1, s, ft_strlen(s));
-        if (mod->precf == 0 && mod->wdtx != 0 && check_0 == 1)   
-             write(1, " ", 1);
+        {
+           write(1, s, ft_strlen(s));
+           mod->nprinted += ft_strlen(s); 
+        } 
+  
+        if (mod->precf == 0 && mod->wdtx != 0 && check_0 == 1)
+        {
+            write(1, " ", 1);
+            mod->nprinted++;
+        } 
     }
     free(s);
 }

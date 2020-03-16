@@ -49,19 +49,27 @@ void   print_o(t_pr *mod)
     {
         if (mod->precf > (int)ft_strlen(s))
             r = mod->precf - ft_strlen(s);
-        while(r--)
-            s = ft_strjoin("0", s);
+        while(r)
+         {
+             s = ft_strjoin("0", s);
+             r--;
+         }   
     }
     // есть минус
     if(mod->minus == 1)
     {
         write(1, s, ft_strlen(s));
+        mod->nprinted += ft_strlen(s);
         if(mod->wdtx > mod->precf)
         {
             if (mod->wdtx > (int)ft_strlen(s))
                 r = mod->wdtx - ft_strlen(s);
-            while(r--)
+            while(r)
+            {
                 write(1, " ", 1);
+                r--;
+                mod->nprinted++;
+            }
         }
     }
     // нет минуса
@@ -73,16 +81,25 @@ void   print_o(t_pr *mod)
                 r = mod->wdtx - ft_strlen(s);
             if(mod->zero == 1 && mod->precf <= 0)
             {
-                while(r--)
+                while(r)
+                {
                     write(1, "0", 1);
+                    r--;
+                    mod->nprinted++;
+                }    
             }   
             else 
             {
-                while(r--)
+                while(r)
+                {
                     write(1, " ", 1);
+                    r--;
+                    mod->nprinted++;
+                } 
             }
         }
         write(1, s, ft_strlen(s));
+        mod->nprinted += ft_strlen(s);
     }
-    
+    free(s);
 }

@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:57:25 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/15 20:35:17 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/15 21:51:09 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void    print_s(t_pr *mod)
     if(mod->minus == 1)
     {
         if(mod->precf >= 0 && mod->precf < (int)ft_strlen(s))
-            write(1, s, mod->precf);
+            write(1, s, mod->precf); 
         else
-            write(1, s, ft_strlen(s));
+            write(1, s, ft_strlen(s));   
     }
     while((mod->wdtx > mod->precf && mod->precf >= 0) || mod->wdtx > (int)ft_strlen(s))
     {    
@@ -41,8 +41,13 @@ void    print_s(t_pr *mod)
     if(mod->minus == 0)
     {
         if(mod->precf >= 0 && mod->precf < (int)ft_strlen(s))
+        {
             write(1, s, mod->precf);
+
+        }    
         else
-            write(1, s, ft_strlen(s));
+        {
+             write(1, s, ft_strlen(s));
+        }   
     }
 }

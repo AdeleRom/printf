@@ -39,29 +39,32 @@ void   print_u(t_pr *mod)
         s[--i] = (l % 10) + '0';
         l = l / 10;
     } 
-    
-    // // хэш
-    // if(mod->hash == 1 && s[0] != '0')
-    //     s = ft_strjoin("0", s);
-
     // точность
     if(mod->precf != -1)
     {
         if (mod->precf > (int)ft_strlen(s))
             r = mod->precf - ft_strlen(s);
-        while(r--)
+        while(r)
+        {
             s = ft_strjoin("0", s);
+            r--;
+        }
     }
     // есть минус
     if(mod->minus == 1)
     {
         write(1, s, ft_strlen(s));
+        mod->nprinted += ft_strlen(s);
         if(mod->wdtx > mod->precf)
         {
             if (mod->wdtx > (int)ft_strlen(s))
                 r = mod->wdtx - ft_strlen(s);
-            while(r--)
+            while(r)
+            {
                 write(1, " ", 1);
+                mod->nprinted++;
+                r--;
+            }    
         }
     }
     // нет минуса
@@ -73,17 +76,25 @@ void   print_u(t_pr *mod)
                 r = mod->wdtx - ft_strlen(s);
             if(mod->zero == 1 && mod->precf <= 0)
             {
-                while(r--)
+                while(r)
+                {
                     write(1, "0", 1);
+                    mod->nprinted++;
+                    r--;
+                } 
             }   
             else 
             {
-                while(r--)
-                    write(1, " ", 1);
+                while(r)
+                {
+                     write(1, " ", 1);
+                     mod->nprinted++;
+                     r--;
+                }   
             }
         }
         write(1, s, ft_strlen(s));
+        mod->nprinted += ft_strlen(s);
     }
     free(s);
-    
 }
