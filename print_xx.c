@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 18:31:25 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/15 18:42:08 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/15 20:33:09 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,6 @@ void   print_xx(t_pr *mod)
                 write(1, " ", 1);
         }
     }
-     
-    
     // нет минуса
     if(mod->minus == 0)
     {
@@ -122,16 +120,10 @@ void   print_xx(t_pr *mod)
                     write(1, "0X", 2);
             }
         }
-        // if(mod->hash == 1 && check_0 == 0)
-        //     s = ft_strjoin("0x", s);
         if ((mod->precf > 0 || mod->precf == -1)) //&& check_0 == 0)
             write(1, s, ft_strlen(s));
-         //else
         if (mod->precf == 0 && mod->wdtx != 0 && check_0 == 1)   
              write(1, " ", 1);
-       // if (mod->precf <= 0 && check_0 == 1)
-
-        //if(check_0 == 1 && mod->wdtx && mod->precf <= 0)
-        //    write(1, " ", 1);
     }
+    free(s);
 }

@@ -127,4 +127,5 @@ void   print_x(t_pr *mod)
         
 
     }
+    free(s);
 }

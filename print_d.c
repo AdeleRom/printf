@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 16:36:38 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/05 22:42:38 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/15 20:35:42 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,8 @@ void   print_d(t_pr *mod)
             s = ft_strjoin(q, s);
         write(1, s, ft_strlen(s));
     }
-    q[0] = '0'; 
+    q[0] = '0';
+    free(s);
 }
 
 int sign(char* s, char* q)

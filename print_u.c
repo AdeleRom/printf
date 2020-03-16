@@ -84,5 +84,6 @@ void   print_u(t_pr *mod)
         }
         write(1, s, ft_strlen(s));
     }
+    free(s);
     
 }
