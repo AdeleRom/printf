@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 14:51:10 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/15 20:17:35 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/17 17:44:02 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,19 @@
                 
     } t_pr;
 
+typedef struct s_spec_o
+    {
+        long  n; // изначальное число
+        long l; // тоже самое, чтоб запомнить
+        char *q;
+        char d[2];
+        char *s; // строка для того чтоб туда записать конечный вид
+        int i; // количество символов
+        int r; // количество нолей или пробелов (ширина - длина строки)
+        int check_0;
+
+    }   t_spec_o;
+
 typedef struct	s_float
     {
         long double	f;
@@ -67,6 +80,8 @@ typedef struct	s_float
     void   print_u(t_pr *mod);
     void   print_x(t_pr *mod);
     void   print_xx(t_pr *mod);
+
+    void    type(t_pr *mod, t_spec_o *spec);
 
     int		ft_act_wdtx(t_float *fl, t_pr *mod);
     void	ft_print_sp(t_float *fl, t_pr *mod);

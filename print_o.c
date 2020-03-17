@@ -6,114 +6,112 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 12:06:21 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/17 13:05:31 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/17 14:35:31 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-#include "ft_printf.h" 
-
-void   print_o(t_pr *mod)
+void	if_no_minus(t_pr *mod, t_spec_o *spec)
 {
-    unsigned long  n; // изначальное число
-    unsigned long l; // тоже самое, чтоб запомнить
-    char *s; // строка для того чтоб туда записать конечный вид
-    int i; // количество символов
-    int r; // количество нолей или пробелов (ширина - длина строки)
+	if (mod->wdtx && mod->wdtx > mod->precf)
+	{
+		if (mod->wdtx > (int)ft_strlen(spec->s))
+			spec->r = mod->wdtx - (int)ft_strlen(spec->s);
+		if (mod->zero == 1 && mod->precf <= 0)
+		{
+			while (spec->r)
+			{
+				write(1, "0", 1);
+				spec->r--;
+				mod->nprinted++;
+			}
+		}
+		else
+		{
+			while (spec->r)
+			{
+				write(1, " ", 1);
+				spec->r--;
+				mod->nprinted++;
+			}
+		}
+	}
+	write(1, spec->s, ft_strlen(spec->s));
+	mod->nprinted += (int)ft_strlen(spec->s);
+}
 
+void	if_minus(t_pr *mod, t_spec_o *spec)
+{
+	write(1, spec->s, ft_strlen(spec->s));
+	mod->nprinted += (int)ft_strlen(spec->s);
+	if (mod->wdtx > mod->precf)
+	{
+		if (mod->wdtx > (int)ft_strlen(spec->s))
+			spec->r = mod->wdtx - (int)ft_strlen(spec->s);
+		while (spec->r)
+		{
+			write(1, " ", 1);
+			spec->r--;
+			mod->nprinted++;
+		}
+	}
+}
 
-    if(mod->leng == 1)
-        n = (unsigned long)( unsigned char)va_arg(*(mod->ap), unsigned int);
-    else if(mod->leng == 2)
-        n = (unsigned long)( unsigned short int)va_arg(*(mod->ap), unsigned int);
-    else if(mod->leng == 3 || mod->leng == 4)
-        n = va_arg(*(mod->ap), unsigned long int);
-    else 
-        n = (unsigned long)va_arg(*(mod->ap), unsigned int);
+void	print_zero_hash_precf(t_pr *mod, t_spec_o *spec)
+{
+	if (spec->l == 0 && mod->precf != 0)
+		spec->s = ft_strjoin("0", spec->s, 2);
+	while (spec->l > 0)
+	{
+		spec->s[--spec->i] = (spec->l % 8) + '0';
+		spec->l = spec->l / 8;
+	}
+	if (mod->hash == 1 && spec->s[0] != '0')
+		spec->s = ft_strjoin("0", spec->s, 2);
+	if (mod->precf != -1)
+	{
+		if (mod->precf > (int)ft_strlen(spec->s))
+			spec->r = mod->precf - (int)ft_strlen(spec->s);
+		while (spec->r)
+		{
+			spec->s = ft_strjoin("0", spec->s, 2);
+			spec->r--;
+		}
+	}
+}
 
-    l = n;
-    i = 0;
-    r = 0;
-  
-    while(n > 0)
-    {
-        n = n / 8;
-        i++;
-    }
+void	type(t_pr *mod, t_spec_o *spec)
+{
+	if (mod->leng == 1)
+		spec->n = (unsigned long)(unsigned char)va_arg(*(mod->ap), unsigned int);
+	else if (mod->leng == 2)
+		spec->n = (unsigned long)(unsigned short int)va_arg(*(mod->ap), unsigned int);
+	else if (mod->leng == 3 || mod->leng == 4)
+		spec->n = va_arg(*(mod->ap), unsigned long int);
+	else
+		spec->n = (unsigned long)va_arg(*(mod->ap), unsigned int);
+	spec->l = spec->n;
+	spec->i = 0;
+	spec->r = 0;
+	while (spec->n > 0)
+	{
+		spec->n = spec->n / 8;
+		spec->i++;
+	}
+	spec->s = ft_strnew(spec->l == 0 ? 1 : spec->i);
+}
 
-    s = ft_strnew(l == 0 ? 1 : i); 
-   
-    //для нуля
-    if (l == 0 && mod->precf != 0)
-        s = ft_strjoin("0", s, 2);
+void	print_o(t_pr *mod)
+{
+	t_spec_o spec;
 
-    while(l > 0)
-    {
-        s[--i] = (l % 8) + '0';
-        l = l / 8;
-    } 
-    
-    // хэш
-    if(mod->hash == 1 && s[0] != '0')
-        s = ft_strjoin("0", s, 2);
-
-    // точность
-    if(mod->precf != -1)
-    {
-        if (mod->precf > (int)ft_strlen(s))
-            r = mod->precf - ft_strlen(s);
-        while(r)
-         {
-             s = ft_strjoin("0", s, 2);
-             r--;
-         }   
-    }
-    // есть минус
-    if(mod->minus == 1)
-    {
-        write(1, s, ft_strlen(s));
-        mod->nprinted += ft_strlen(s);
-        if(mod->wdtx > mod->precf)
-        {
-            if (mod->wdtx > (int)ft_strlen(s))
-                r = mod->wdtx - ft_strlen(s);
-            while(r)
-            {
-                write(1, " ", 1);
-                r--;
-                mod->nprinted++;
-            }
-        }
-    }
-    // нет минуса
-    if(mod->minus == 0)
-    {
-        if(mod->wdtx && mod->wdtx > mod->precf)
-        {
-            if (mod->wdtx > (int)ft_strlen(s))
-                r = mod->wdtx - ft_strlen(s);
-            if(mod->zero == 1 && mod->precf <= 0)
-            {
-                while(r)
-                {
-                    write(1, "0", 1);
-                    r--;
-                    mod->nprinted++;
-                }    
-            }   
-            else 
-            {
-                while(r)
-                {
-                    write(1, " ", 1);
-                    r--;
-                    mod->nprinted++;
-                } 
-            }
-        }
-        write(1, s, ft_strlen(s));
-        mod->nprinted += ft_strlen(s);
-    }
-    free(s);
+	type(mod, &spec);
+	print_zero_hash_precf(mod, &spec);
+	if (mod->minus == 1)
+		if_minus(mod, &spec);
+	if (mod->minus == 0)
+		if_no_minus(mod, &spec);
+	free(spec.s);
+	spec.s = NULL;
 }
