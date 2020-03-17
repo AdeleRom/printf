@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 16:13:17 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/16 14:54:43 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/17 11:31:25 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,13 +146,17 @@ int     ft_printf(const char *format, ...)
     va_list ap; //список аргументов
 
 	t_pr    *mod;// инициализирую структуру
+    int nprinted;
     
+        
     if (!((mod = (t_pr*)malloc(sizeof(t_pr)))))
         return (0);
     mod->nprinted = 0;
 	va_start(ap, format); //запускаем 
     mod->ap = &ap;
     mparser(mod, (char*)format);
-	va_end(ap); 
-    return(mod->nprinted);
+    nprinted = mod->nprinted;
+	va_end(ap);
+    free(mod);
+    return(nprinted);
 }

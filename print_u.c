@@ -32,7 +32,7 @@ void   print_u(t_pr *mod)
    
     //для нуля
     if (l == 0 && mod->precf != 0)
-        s = ft_strjoin("0", s);
+        s = ft_strjoin("0", s, 2);
 
     while(l > 0)
     {
@@ -46,7 +46,7 @@ void   print_u(t_pr *mod)
             r = mod->precf - ft_strlen(s);
         while(r)
         {
-            s = ft_strjoin("0", s);
+            s = ft_strjoin("0", s, 2);
             r--;
         }
     }

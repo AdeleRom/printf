@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 16:36:38 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/16 16:27:18 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/17 11:38:11 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void   print_d(t_pr *mod)
     
     //проверка на 0
     if(l == 0 && mod->precf != 0) 
-        s = ft_strjoin("0", s);
+        s = ft_strjoin("0", s, 2);
 
     //переводим число, записываем в s
     while(l != 0) 
@@ -67,12 +67,7 @@ void   print_d(t_pr *mod)
              s[--i] =  (l % 10) + 48;
         l = l / 10;         
     }
-   
-
-    // хэш
-    //if(mod->hash == 1 && s[0] != '0')
-    //    s = ft_strjoin("0", s);
-
+    
     // точность
     if(mod->precf != -1)
     {
@@ -81,21 +76,20 @@ void   print_d(t_pr *mod)
             r = mod->precf - ft_strlen(s);
         while(r)
         {
-            s = ft_strjoin("0", s);
+            s = ft_strjoin("0", s, 2);
             r--;
-        }
-            
+        }       
     }
     
     // джойним знак
     if(mod->zero == 0 && (q[0] == '-' || q[0] == '+' || q[0] == ' '))
-        s = ft_strjoin(q, s);
+        s = ft_strjoin(q, s, 2);
     
     // есть минус
     if(mod->minus == 1)
     {
         if (mod->zero == 1)
-            s = ft_strjoin(q, s);
+            s = ft_strjoin(q, s, 2);
         write(1, s, ft_strlen(s));
         mod->nprinted += ft_strlen(s);
         if(mod->wdtx > mod->precf)
@@ -152,7 +146,7 @@ void   print_d(t_pr *mod)
             }
         }
         else if (mod->zero == 1)
-            s = ft_strjoin(q, s);
+            s = ft_strjoin(q, s, 2);
         write(1, s, ft_strlen(s));
         mod->nprinted += ft_strlen(s);
     }

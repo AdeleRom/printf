@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_o.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/17 12:06:21 by lniki             #+#    #+#             */
+/*   Updated: 2020/03/17 13:05:31 by lniki            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
 #include "ft_printf.h" 
 
 void   print_o(t_pr *mod)
@@ -32,7 +46,7 @@ void   print_o(t_pr *mod)
    
     //для нуля
     if (l == 0 && mod->precf != 0)
-        s = ft_strjoin("0", s);
+        s = ft_strjoin("0", s, 2);
 
     while(l > 0)
     {
@@ -42,7 +56,7 @@ void   print_o(t_pr *mod)
     
     // хэш
     if(mod->hash == 1 && s[0] != '0')
-        s = ft_strjoin("0", s);
+        s = ft_strjoin("0", s, 2);
 
     // точность
     if(mod->precf != -1)
@@ -51,7 +65,7 @@ void   print_o(t_pr *mod)
             r = mod->precf - ft_strlen(s);
         while(r)
          {
-             s = ft_strjoin("0", s);
+             s = ft_strjoin("0", s, 2);
              r--;
          }   
     }

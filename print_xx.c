@@ -6,7 +6,7 @@
 /*   By: lniki <lniki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 18:31:25 by lniki             #+#    #+#             */
-/*   Updated: 2020/03/16 16:52:48 by lniki            ###   ########.fr       */
+/*   Updated: 2020/03/17 11:03:04 by lniki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void   print_xx(t_pr *mod)
     } 
     
     if(mod->zero == 1 && mod->hash == 0 && mod->precf == -1 && mod->wdtx > (int)ft_strlen(s))
-         s = ft_strjoin("0", s);
+         s = ft_strjoin("0", s, 2);
 
     // точность
     if(mod->precf != -1)
@@ -74,7 +74,7 @@ void   print_xx(t_pr *mod)
             r = mod->precf - ft_strlen(s);
         while(r)
         {
-            s = ft_strjoin("0", s);
+            s = ft_strjoin("0", s, 2);
             r--;
         }
          
