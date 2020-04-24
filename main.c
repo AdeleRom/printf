@@ -15,49 +15,50 @@
 
 int main()
 {
-    ft_printf("%5.35c.\n", 'z');
+    // ft_printf("%5.35c.\n", 'z');
 	// printf("%5hd.\n", 'z');
 	// printf("%c.%c.%c.%c.%c.%c.%c.%c.%c.%c.\n", 48, 49, 50, 51, 52, 53, 54, 55, 56, 57);
-	ft_printf("jhtjhf%-5hhc.%2c.%1c.\n", 'z', 'd', 'a');
-	int c  = 0;
-	ft_printf("%-25p.\n", &c);
+	// ft_printf("jhtjhf%-5hhc.%2c.%1c.\n", 'z', 'd', 'a');
+	// int c  = 0;
+	// ft_printf("%-25p.\n", &c);
 	
-	ft_printf("%o\n", 43);
-	// printf("%o\n", 43);
+	// ft_printf("%o\n", 43);
+	// // printf("%o\n", 43);
 	
-	ft_printf("%#5o\n", 3);
-	// printf("%#5o\n", 3);
+	// ft_printf("%#5o\n", 3);
+	// // printf("%#5o\n", 3);
 	
-	ft_printf("%08.5o\n", 34);
-	// printf("%08.5o\n", 34);
-	ft_printf("this %o number", 17);
-	ft_printf("%5.2o\n", 53);
-	// printf("%5.2o\n", 53);
+	// ft_printf("%08.5o\n", 34);
+	// // printf("%08.5o\n", 34);
+	// ft_printf("this %o number", 17);
+	// ft_printf("%5.2o\n", 53);
+	// // printf("%5.2o\n", 53);
 	
-	// printf("%7o\n", 33);
+	// // printf("%7o\n", 33);
 	
-	ft_printf("%7o\n", 33);
+	// ft_printf("%7o\n", 33);
 
-	// printf("%2o", 94827);
-	ft_printf("%.3o", 938862);
+	// // printf("%2o", 94827);
+	// ft_printf("%.3o", 938862);
 	//ft_printf("%+7d\n", 0);
-	// printf("%+7d\n", 0);
-	ft_printf("%015.6d\n", 43);
-	// printf("%015.6d\n", 43);
+	//printf("%+7d\n", 0);
+	// ft_printf("%6.7d\n", 43);
+	// printf("%6.7d\n", 43);
+	ft_printf("%-4i\n", 94827);
+	printf("%-4i\n", 94827);
+	// // printf("%+3.7d", 3267);
 	
-	// printf("%+3.7d", 3267);
+	// // printf("%-25p\n", &c);
 	
-	// printf("%-25p\n", &c);
-	
-	// printf("%-5c.\n", 'z');
-	ft_printf("this %#x number\n", 17);
-	// printf("this %#x number", 17);
-	ft_printf("%#5.0x\n", 0);
-	// printf("%#5.0x\n", 0);
-	ft_printf("%#05x\n", 43);
-	// printf("%#05x\n", 43);
-	ft_printf("%.0p\n, %.p\n", 0, 0);
-	//  printf("%d\n", ft_printf("%.0p\n, %.p\n", 0, 0));
+	// // printf("%-5c.\n", 'z');
+	// ft_printf("this %#x number\n", 17);
+	// // printf("this %#x number", 17);
+	// ft_printf("%#5.0x\n", 0);
+	// // printf("%#5.0x\n", 0);
+	// ft_printf("%#05x\n", 43);
+	// // printf("%#05x\n", 43);
+	// ft_printf("%.0p\n, %.p\n", 0, 0);
+	// //  printf("%d\n", ft_printf("%.0p\n, %.p\n", 0, 0));
 	// // printf("%.0d\n, %.d\n", 0, 0);
 	//  printf("%d\n", printf("%.0p\n, %.p\n", 0, 0));
 

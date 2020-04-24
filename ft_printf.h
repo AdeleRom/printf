@@ -48,13 +48,25 @@ typedef struct s_spec_o
         long  n; // изначальное число
         long l; // тоже самое, чтоб запомнить
         char *q;
-        char d[2];
         char *s; // строка для того чтоб туда записать конечный вид
         int i; // количество символов
         int r; // количество нолей или пробелов (ширина - длина строки)
         int check_0;
 
     }   t_spec_o;
+
+typedef struct s_spec_d
+    {
+        long int n; // изначальное число
+        long int l; // тоже самое, чтоб запомнить
+        
+        //long int z; // дополнительная переменная для сохранения 
+        char q[2]; // строка для знака 
+        char *s;
+        int i;
+        int r;
+
+    }   t_spec_d;
 
 typedef struct	s_float
     {
